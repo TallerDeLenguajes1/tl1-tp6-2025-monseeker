@@ -2,14 +2,18 @@
 using System;
 
 int desicion = 1;
-Console.WriteLine("Calculadora");
+Console.WriteLine("Calculadora Avanzada");
 
 do{
-    Console.WriteLine("1. Sumar");
-    Console.WriteLine("2. Restar");
-    Console.WriteLine("3. Multiplicar");
-    Console.WriteLine("4. Dividir");
-    Console.Write("Ingrese la operacion: ");
+    Console.WriteLine("1. Valor Absoluto");
+    Console.WriteLine("2. Cuadrado");
+    Console.WriteLine("3. Raiz Cuadrada");
+    Console.WriteLine("4. Seno");
+    Console.WriteLine("5. Coseno");
+    Console.WriteLine("6. Parte Entera de un Real");
+    Console.WriteLine("4. Max y Min entre dos Numeros");
+    
+    Console.Write("\nIngrese la operacion: ");
 
     string? cadena = Console.ReadLine();
     
@@ -20,19 +24,20 @@ do{
         switch (operacion)
         {
             case 1:
-                resultado = Sumar(Numeros(), Numeros());
+                Console.WriteLine("Valor Absoluto");
+                resultado = Math.Abs(Numeros());
                 Console.WriteLine("Resultado: " + resultado);
                 break;
             case 2:
-                resultado = Restar(Numeros(), Numeros());
+                resultado = Math.Pow(Numeros(), 2);
                 Console.WriteLine("Resultado: " + resultado);
                 break;
             case 3:
-                resultado = Producto(Numeros(), Numeros());
+                resultado = Math.Sqrt(Numeros());
                 Console.WriteLine("Resultado: " + resultado);
                 break;
             case 4:
-                resultado = Cociente(Numeros(), Numeros());
+                resultado = ;
                 if (resultado != 0)
                 {
                     Console.WriteLine("Resultado: " + resultado);
