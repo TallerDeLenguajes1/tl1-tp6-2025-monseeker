@@ -15,31 +15,39 @@ do{
     
     if (int.TryParse(cadena, out int operacion))
     {
-        int resultado;
+        double num1, num2, resultado;
 
         switch (operacion)
         {
             case 1:
-                resultado = Sumar(Numeros(), Numeros());
-                Console.WriteLine("Resultado: " + resultado);
+                num1 = PedirNumero();
+                num2 = PedirNumero();
+                resultado = Sumar(num1, num2);
+                Console.WriteLine($"{num1}+{num2}={resultado:F2}");
                 break;
             case 2:
-                resultado = Restar(Numeros(), Numeros());
-                Console.WriteLine("Resultado: " + resultado);
+                num1 = PedirNumero();
+                num2 = PedirNumero();
+                resultado = Restar(num1, num2);
+                Console.WriteLine($"{num1}-{num2}={resultado:F2}");
                 break;
             case 3:
-                resultado = Producto(Numeros(), Numeros());
-                Console.WriteLine("Resultado: " + resultado);
+                num1 = PedirNumero();
+                num2 = PedirNumero();
+                resultado = Producto(num1, num2);
+                Console.WriteLine($"{num1}*{num2}={resultado:F2}");
                 break;
             case 4:
-                resultado = Cociente(Numeros(), Numeros());
-                if (resultado != 0)
+                num1 = PedirNumero();
+                num2 = PedirNumero();
+                if (num2 != 0)
                 {
-                    Console.WriteLine("Resultado: " + resultado);
+                    resultado = Cociente(num1, num2);
+                    Console.WriteLine($"{num1}/{num2}={resultado:F2}");
                 }
                 break;
             default:
-                Console.WriteLine("Metele algo valido. \n");
+                Console.WriteLine("Ingrese una opción válida del menú.\n");
                 break;
         }
 
@@ -47,7 +55,7 @@ do{
     {
         Console.WriteLine("Ingrese un numero. \n");
     }
-    int aux = 0;
+    bool ingresoValorCorrecto = false;
     do
     {
         Console.WriteLine("Desea realizar otra operacion?");
@@ -58,11 +66,12 @@ do{
         {
             if (desicion != 1 && desicion != 0)
             {
-                Console.WriteLine("Metele algo valido. \n");
+                Console.WriteLine("Ingrese una opción válida del menú.\n");
+
             }
             else
             {
-                aux = 3;
+                ingresoValorCorrecto = true;
             }
         }
         else
@@ -70,44 +79,45 @@ do{
             Console.WriteLine("Ingrese un numero. \n");
 
         }
-    } while (aux != 3);
+    } while (ingresoValorCorrecto != true);
 
 } while (desicion != 0);
 
 
 
 
-int Numeros()
+double PedirNumero()
 {
-    Console.Write("Ingrese un numero: ");
-    string? entrada = Console.ReadLine();
-    if (int.TryParse(entrada, out int num))
+    bool numeroValido;
+    do
     {
-        return num;
-    }
-    else
-    {
-        Console.WriteLine("Ingrese un numero.");
-        return 0;
-    }
+        Console.Write("Ingrese un numero: ");
+        string? entrada = Console.ReadLine();
+        numeroValido = double.TryParse(entrada, out double num);
+        if (!numeroValido)
+        {
+            Console.WriteLine("Ingrese un numero valido.");
+        }
+    } while (!numeroValido);
+    return num;
 }
 
-int Sumar(int num1, int num2)
+double Sumar(double num1, double num2)
 {
     return num1 + num2;
 }
 
-int Restar(int num1, int num2)
+double Restar(double num1, double num2)
 {
     return num1 - num2;
 }
 
-int Producto(int num1, int num2)
+double Producto(double num1, double num2)
 {
     return num1 * num2;
 }
 
-int Cociente(int num1, int num2)
+double Cociente(double num1, double num2)
 {
     if (num2 != 0)
     {
