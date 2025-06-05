@@ -22,60 +22,69 @@ do{
         switch (operacion)
         {
             case 1:
-                Console.WriteLine("Valor Absoluto");
+                Console.WriteLine("\nValor Absoluto");
                 double resultadoAbsoluto = Math.Abs(Numeros());
-                Console.WriteLine("Resultado: " + resultadoAbsoluto);
+                Console.WriteLine($"Resultado: {resultadoAbsoluto} \n");
                 break;
             case 2:
+                Console.WriteLine("\nCuadrado");
                 double resultadoPotencia = Math.Pow(Numeros(), 2);
-                Console.WriteLine("Resultado: " + resultadoPotencia);
+                Console.WriteLine($"Resultado: {resultadoPotencia} \n");
                 break;
             case 3:
-                double = numero Numeros();
+                Console.WriteLine("\nRaiz Cuadrada");
+                double numero = Numeros();
                 if (numero >= 0)
                 {
                     double resultadoRaiz = Math.Sqrt(numero);
-                    Console.WriteLine("Resultado: " + resultadoRaiz);
-                } else {
-                    Console.WriteLine("Ingrese un numero no negativo.");
+                    Console.WriteLine($"Resultado: {resultadoRaiz} \n");
+                }
+                else
+                {
+                    Console.WriteLine("Ingrese un numero no negativo. \n");
                 }
                 break;
             case 4:
+                Console.WriteLine("\nSeno");
                 double anguloGradosSeno = Numeros();
                 double resultadoSeno = Math.Sin(anguloGradosSeno * Math.PI / 180);
-                Console.WriteLine($"Seno de {anguloGradosSeno} grados: {resultadoSeno}");
+                Console.WriteLine($"Seno de {anguloGradosSeno} grados: {resultadoSeno} \n");
                 break;
             case 5:
+                Console.WriteLine("\nCoseno");
                 double anguloGradosCoseno = Numeros();
                 double resultadoCoseno = Math.Cos(anguloGradosCoseno * Math.PI / 180);
-                Console.WriteLine($"Coseno de {anguloGradosCoseno} grados: {resultadoCoseno}");
+                Console.WriteLine($"Coseno de {anguloGradosCoseno} grados: {resultadoCoseno} \n");
                 break;
             case 6:
-                int resultadoEntero = (int)(Numeros());
-                Console.WriteLine("Resultado: " + resultadoEntero);
+                Console.WriteLine("\nEntero de un real");
+                int resultadoEntero = (int)Numeros();
+                Console.WriteLine($"Resultado: {resultadoEntero} \n");
                 break;
             case 7:
+                Console.WriteLine("\nMayor y menor");
                 double primerNumero = Numeros();
                 double segundoNumero = Numeros();
                 if (primerNumero > segundoNumero)
                 {
-                    Console.WriteLine($"Entre {primerNumero} y {segundoNumero} el mayor es {primerNumero}");
+                    Console.WriteLine($"Entre {primerNumero} y {segundoNumero} el mayor es {primerNumero} y el menor {segundoNumero} \n");
                 }
                 else if (segundoNumero > primerNumero)
                 {
-                    Console.WriteLine($"Entre {primerNumero} y {segundoNumero} el mayor es {segundoNumero}");
+                    Console.WriteLine($"Entre {primerNumero} y {segundoNumero} el mayor es {segundoNumero} y el menor {primerNumero} \n");
                 }
                 else
                 {
-                    Console.WriteLine("Ambos numeros son iguales.");
+                    Console.WriteLine("Ambos numeros son iguales. \n");
                 }
                 break;
             default:
-                Console.WriteLine("Metele algo valido. \n");
+                Console.WriteLine("Ingrese un valor valido. \n");
                 break;
         }
 
-    } else
+    }
+    else
     {
         Console.WriteLine("Ingrese un numero. \n");
     }
@@ -87,15 +96,15 @@ do{
         Console.WriteLine("1.Si \t0.No");
         Console.Write("Desicion: ");
         cadena = Console.ReadLine();
+        Console.WriteLine("\n");
         if (int.TryParse(cadena, out realizarOtraOperacion))
         {
             if (realizarOtraOperacion != 1 && realizarOtraOperacion != 0)
             {
-                Console.WriteLine("Metele algo valido. \n");
+                Console.WriteLine("Ingrese un valor valido. \n");
             }
             else
             {
-                Console.WriteLine("\nIngrese la operacion:");
                 ingresoValorCorrecto = true;
             }
         }
