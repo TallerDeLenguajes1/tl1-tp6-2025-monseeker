@@ -11,9 +11,9 @@ do{
     Console.WriteLine("4. Dividir");
     Console.WriteLine("5. Calculadora Avanzada");
     Console.WriteLine("6. Comparar dos Numeros");
-    Console.Write("Ingrese la operacion: ");
+    Console.Write("\nIngrese la operacion: ");
 
-    string? cadena = Console.ReadLine();
+    string cadena = Console.ReadLine();
     
     if (int.TryParse(cadena, out int operacion))
     {
@@ -25,19 +25,19 @@ do{
                 num1 = PedirNumero();
                 num2 = PedirNumero();
                 resultado = Sumar(num1, num2);
-                Console.WriteLine($"{num1}+{num2}={resultado:F2}");
+                Console.WriteLine($"{num1}+{num2}={resultado:F2}\n");
                 break;
             case 2:
                 num1 = PedirNumero();
                 num2 = PedirNumero();
                 resultado = Restar(num1, num2);
-                Console.WriteLine($"{num1}-{num2}={resultado:F2}");
+                Console.WriteLine($"{num1}-{num2}={resultado:F2}\n");
                 break;
             case 3:
                 num1 = PedirNumero();
                 num2 = PedirNumero();
                 resultado = Producto(num1, num2);
-                Console.WriteLine($"{num1}*{num2}={resultado:F2}");
+                Console.WriteLine($"{num1}*{num2}={resultado:F2}\n");
                 break;
             case 4:
                 num1 = PedirNumero();
@@ -45,50 +45,18 @@ do{
                 if (num2 != 0)
                 {
                     resultado = Cociente(num1, num2);
-                    Console.WriteLine($"{num1}/{num2}={resultado:F2}");
-                }
-                break;
-            case 5:
-                Console.WriteLine("Calculadora Avanzada");
-                double primerNumeroACalcular = PedirNumero();
-                Console.WriteLine("\n");
-
-                double resultadoAbsoluto = Math.Abs(primerNumeroACalcular);
-                Console.WriteLine($"Valor Absoluto de {primerNumeroACalcular}: {resultadoAbsoluto} \n");
-
-                double resultadoPotencia = Math.Pow(primerNumeroACalcular, 2);
-                Console.WriteLine($"Cuadrado de {primerNumeroACalcular}: {resultadoPotencia} \n");
-
-                if (primerNumeroACalcular >= 0)
-                {
-                    double resultadoRaiz = Math.Sqrt(primerNumeroACalcular);
-                    Console.WriteLine($"Raiz cuadrada de {primerNumeroACalcular}: {resultadoRaiz} \n");
+                    Console.WriteLine($"{num1}/{num2}={resultado:F2}\n");
                 }
                 else
                 {
-                    Console.WriteLine("No existe la raiz cuadrada de un numero negativo. \n");
+                    Console.WriteLine("No es posible dividir un numero en cero.\n");
                 }
-
-                double resultadoSeno = Math.Sin(primerNumeroACalcular * Math.PI / 180);
-                Console.WriteLine($"Seno de {primerNumeroACalcular} grados: {resultadoSeno} \n");
-
-                double resultadoCoseno = Math.Cos(primerNumeroACalcular * Math.PI / 180);
-                Console.WriteLine($"Coseno de {primerNumeroACalcular} grados: {resultadoCoseno} \n");
-
-                double resultadoEntero = Math.Truncate(primerNumeroACalcular);
-                Console.WriteLine($"Entero del real {primerNumeroACalcular}: {resultadoEntero} \n");
                 break;
-
+            case 5:
+                CalculadoraAvanzada();
+                break;
             case 6:
-                Console.WriteLine("Ingrese dos numeros para comparar: ");
-                double primerNumeroAComparar = PedirNumero();
-                double segundoNumeroAComparar = PedirNumero();
-
-                double numeroMaximo = Math.Max(primerNumeroAComparar, segundoNumeroAComparar);
-                double numeroMinimo = Math.Min(primerNumeroAComparar, segundoNumeroAComparar);
-
-                Console.WriteLine($"Maximo: {numeroMaximo}");
-                Console.WriteLine($"Minimo: {numeroMinimo}"); 
+                CompararDosNumeros();
                 break;
             default:
                 Console.WriteLine("Ingrese una opción válida del menú.\n");
@@ -106,6 +74,7 @@ do{
         Console.WriteLine("1.Si \t0.No");
         Console.Write("Desicion: ");
         cadena = Console.ReadLine();
+        Console.WriteLine("\n");
         if (int.TryParse(cadena, out desicion))
         {
             if (desicion != 1 && desicion != 0)
@@ -118,13 +87,11 @@ do{
                 ingresoValorCorrecto = true;
             }
         }
-        else {
+        else
+        {
             Console.WriteLine("Ingrese un numero. \n");
         }
     } while (ingresoValorCorrecto != true);
-
-
-
 
 } while (desicion != 0);
 
@@ -166,15 +133,50 @@ double Producto(double num1, double num2)
 
 double Cociente(double num1, double num2)
 {
-    if (num2 != 0)
+    return num1 / num2;
+} 
+
+void CalculadoraAvanzada()
+{
+    Console.WriteLine("Calculadora Avanzada");
+    double num = PedirNumero();
+    Console.WriteLine("\n");
+
+    double resultadoAbsoluto = Math.Abs(num);
+    Console.WriteLine($"Valor Absoluto de {num}: {resultadoAbsoluto} \n");
+
+    double resultadoPotencia = Math.Pow(num, 2);
+    Console.WriteLine($"Cuadrado de {num}: {resultadoPotencia} \n");
+
+    if (num >= 0)
     {
-        return num1 / num2;
+        double resultadoRaiz = Math.Sqrt(num);
+        Console.WriteLine($"Raiz cuadrada de {num}: {resultadoRaiz} \n");
     }
     else
     {
-        Console.WriteLine("No es posible dividir un numero en 0.");
-        return 0;
+        Console.WriteLine("No existe la raiz cuadrada de un numero negativo. \n");
     }
 
-    return num;
-} 
+    double resultadoSeno = Math.Sin(num * Math.PI / 180);
+    Console.WriteLine($"Seno de {num} grados: {resultadoSeno} \n");
+
+    double resultadoCoseno = Math.Cos(num * Math.PI / 180);
+    Console.WriteLine($"Coseno de {num} grados: {resultadoCoseno} \n");
+
+    double resultadoEntero = Math.Truncate(num);
+    Console.WriteLine($"Entero del real {num}: {resultadoEntero} \n");
+}
+
+void CompararDosNumeros()
+{
+    Console.WriteLine("Ingrese dos numeros para comparar: ");
+    double primerNumeroAComparar = PedirNumero();
+    double segundoNumeroAComparar = PedirNumero();
+
+    double numeroMaximo = Math.Max(primerNumeroAComparar, segundoNumeroAComparar);
+    double numeroMinimo = Math.Min(primerNumeroAComparar, segundoNumeroAComparar);
+
+    Console.WriteLine($"Maximo: {numeroMaximo}");
+    Console.WriteLine($"Minimo: {numeroMinimo}"); 
+}
